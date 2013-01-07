@@ -44,6 +44,8 @@ abstract class Kohana_OAuth_Token {
 		'token',
 	);
 
+	protected $data = array();
+
 	/**
 	 * Sets the token and secret values.
 	 *
@@ -62,6 +64,8 @@ abstract class Kohana_OAuth_Token {
 
 			$this->$key = $options[$key];
 		}
+
+		$this->data = $options;
 	}
 
 	/**
@@ -75,7 +79,7 @@ abstract class Kohana_OAuth_Token {
 	 */
 	public function __get($key)
 	{
-		return $this->$key;
+		return isset($this->$key) ? $this->$key : $this->data[$key];
 	}
 
 	/**
