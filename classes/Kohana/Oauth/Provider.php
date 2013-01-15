@@ -207,11 +207,12 @@ abstract class Kohana_OAuth_Provider {
 		// Create a response from the request
 		$response = $request->execute();
 
+		$params = $response->params();
+		$params['token'] = $response->param('oauth_token');
+		$params['secret'] = $response->param('oauth_token_secret');
+
 		// Store this token somewhere useful
-		return OAuth_Token::factory('access', array(
-			'token'  => $response->param('oauth_token'),
-			'secret' => $response->param('oauth_token_secret'),
-		));
+		return OAuth_Token::factory('access', $params);
 	}
 
 } // End OAuth_Signature
