@@ -125,7 +125,7 @@ abstract class Kohana_OAuth_Provider {
 	public function request_token(OAuth_Consumer $consumer, array $params = NULL)
 	{
 		// Create a new GET request for a request token with the required parameters
-		$request = OAuth_Request::factory('token', 'GET', $this->url_request_token(), array(
+		$request = OAuth_Request::factory('Token', 'GET', $this->url_request_token(), array(
 			'realm'              => $consumer->realm,
 			'oauth_consumer_key' => $consumer->key,
 			'oauth_callback'     => $consumer->callback,
@@ -144,7 +144,7 @@ abstract class Kohana_OAuth_Provider {
 		$response = $request->execute();
 
 		// Store this token somewhere useful
-		return OAuth_Token::factory('request', array(
+		return OAuth_Token::factory('Request', array(
 			'token'  => $response->param('oauth_token'),
 			'secret' => $response->param('oauth_token_secret'),
 		));
@@ -162,7 +162,7 @@ abstract class Kohana_OAuth_Provider {
 	public function authorize_url(OAuth_Token_Request $token, array $params = NULL)
 	{
 		// Create a new GET request for a request token with the required parameters
-		$request = OAuth_Request::factory('authorize', 'GET', $this->url_authorize(), array(
+		$request = OAuth_Request::factory('Authorize', 'GET', $this->url_authorize(), array(
 			'oauth_token' => $token->token,
 		));
 
@@ -188,7 +188,7 @@ abstract class Kohana_OAuth_Provider {
 	public function access_token(OAuth_Consumer $consumer, OAuth_Token_Request $token, array $params = NULL)
 	{
 		// Create a new GET request for a request token with the required parameters
-		$request = OAuth_Request::factory('access', 'GET', $this->url_access_token(), array(
+		$request = OAuth_Request::factory('Access', 'GET', $this->url_access_token(), array(
 			'realm'              => $consumer->realm,
 			'oauth_consumer_key' => $consumer->key,
 			'oauth_token'        => $token->token,
@@ -212,7 +212,7 @@ abstract class Kohana_OAuth_Provider {
 		$params['secret'] = $response->param('oauth_token_secret');
 
 		// Store this token somewhere useful
-		return OAuth_Token::factory('access', $params);
+		return OAuth_Token::factory('Access', $params);
 	}
 
 } // End OAuth_Signature

@@ -11,7 +11,7 @@
  */
 class Kohana_OAuth_Token_Access extends OAuth_Token {
 
-	protected $name = 'access';
+	protected $name = 'Access';
 
 	/**
 	 * @var  string  token secret

@@ -38,7 +38,7 @@ abstract class Kohana_OAuth2_Provider {
 	public function authorize_url(OAuth2_Client $client, array $params = NULL)
 	{
 		// Create a new GET request for a request token with the required parameters
-		$request = OAuth2_Request::factory('authorize', 'GET', $this->url_authorize(), array(
+		$request = OAuth2_Request::factory('Authorize', 'GET', $this->url_authorize(), array(
 			'response_type' => 'code',
 			'client_id'     => $client->id,
 			'redirect_uri'  => $client->callback,
@@ -55,7 +55,7 @@ abstract class Kohana_OAuth2_Provider {
 
 	public function access_token(OAuth2_Client $client, $code, array $params = NULL)
 	{
-		$request = OAuth2_Request::factory('token', 'POST', $this->url_access_token(), array(
+		$request = OAuth2_Request::factory('Token', 'POST', $this->url_access_token(), array(
 			'grant_type'    => 'authorization_code',
 			'code'          => $code,
 			'client_id'     => $client->id,
@@ -78,7 +78,7 @@ abstract class Kohana_OAuth2_Provider {
 		$params = $response->params();
 		$params['token'] = $response->param('access_token');
 
- 	    return OAuth2_Token::factory('access', $params);
+ 	    return OAuth2_Token::factory('Access', $params);
 	}
 
 }

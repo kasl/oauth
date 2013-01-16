@@ -11,7 +11,7 @@
  */
 class Kohana_OAuth_Request_Access extends OAuth_Request {
 
-	protected $name = 'access';
+	protected $name = 'Access';
 
 	protected $required = array(
 		'oauth_consumer_key'     => TRUE,
