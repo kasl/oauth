@@ -23,7 +23,7 @@ abstract class Kohana_OAuth_Provider {
 	 */
 	public static function factory($name, array $options = NULL)
 	{
-		$class = 'OAuth_Provider_'.$name;
+		$class = 'OAuth_Provider_'.ucfirst($name);
 
 		return new $class($options);
 	}
