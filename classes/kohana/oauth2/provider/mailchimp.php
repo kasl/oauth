@@ -21,7 +21,7 @@ abstract class Kohana_OAuth2_Provider_Mailchimp extends OAuth2_Provider {
 
 	public function metadata(OAuth2_Token_Access $token, array $params = NULL)
 	{
-		$request = OAuth2_Request::factory('resource', 'GET', $this->url_metadata(), array(
+		$request = OAuth2_Client_Request::factory('resource', 'GET', $this->url_metadata(), array(
 				'access_token' => $token->token,
 			))
 			->required('access_token', TRUE)
@@ -36,7 +36,7 @@ abstract class Kohana_OAuth2_Provider_Mailchimp extends OAuth2_Provider {
 		return json_decode($this->execute($request));
 	}
 
-	public function execute(OAuth2_Request $request, array $options = NULL)
+	public function execute(OAuth2_Client_Request $request, array $options = NULL)
 	{
 		$options[CURLOPT_HTTPHEADER][] = 'Expect:';
 		$options[CURLOPT_HTTPHEADER][] = 'Accept: application/json';

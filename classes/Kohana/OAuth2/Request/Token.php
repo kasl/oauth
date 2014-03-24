@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-abstract class Kohana_OAuth2_Request_Token extends OAuth2_Request {
+abstract class Kohana_OAuth2_Request_Token extends OAuth2_Client_Request {
 
 	protected $auth_params = '/^(grant_type|code|client_id|client_secret)$/';
 
