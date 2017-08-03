@@ -1,5 +1,5 @@
 {
-    "name": "pridemon/oauth",
+    "name": "kasl/oauth",
     "type":        "kohana-module",
     "description": "An implementation of the [OAuth](http://oauth.net/) protocol.",
     "license":     "BSD-3-Clause",
@@ -17,8 +17,8 @@
     ],
     "authors": [
         {
-            "name": "Ilya Gudkov",
-            "email": "pridemon@yandex.ru"
+            "name": "Kasl",
+            "email": "roman.muratov@gmail.com"
         }
     ]
 }
