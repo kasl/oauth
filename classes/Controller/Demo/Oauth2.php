@@ -43,13 +43,13 @@ abstract class Controller_Demo_OAuth2 extends Controller_Demo {
 		// Get the name of the demo from the class name
 		$provider = strtolower($this->api);
 
-		// Load the provider
-		$this->provider = OAuth2_Provider::factory($provider);
+        // Load provider configuration
+        $config = Kohana::$config->load('oauth')->$provider;
 
-		// Load provider configuration
-		$config = Kohana::$config->load('oauth')->$provider;
+        // Load the provider
+        $this->provider = OAuth2_Provider::factory($provider, $config);
 
-		// Load the client for this provider
+        // Load the client for this provider
 		$this->client = OAuth2_Client::factory($config);
 
 		if ($token = $this->session->get($this->key('access')))
